@@ -1,13 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Module 4 Solution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 4 Solution - Coursera</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent-blue: #38bdf8;
+      --accent-purple: #818cf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --hello-color: #34d399;
+      --bye-color: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      background: linear-gradient(to right, var(--text-main), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .notice {
+      background: rgba(129, 140, 248, 0.1);
+      border-left: 4px solid var(--accent-purple);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+
+    .console-box {
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .console-header {
+      background: #131b2e;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+
+    .console-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    .console-body {
+      padding: 16px;
+      font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .log-entry {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .log-entry.hello {
+      color: var(--hello-color);
+    }
+
+    .log-entry.bye {
+      color: var(--bye-color);
+    }
+
+    .prefix {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      user-select: none;
+    }
+  </style>
+
+  <!-- STARTER REQUIREMENTS: names array for test script verification -->
+  <script>
+    var names = []; // DO NOT REMOVE
+  </script>
+
+  <!-- Custom console hook to display output directly on page as well as console -->
+  <script>
+    (function() {
+      var originalLog = console.log;
+      window.capturedLogs = [];
+      console.log = function(msg) {
+        window.capturedLogs.push(msg);
+        originalLog.apply(console, arguments);
+      };
+    })();
+  </script>
+
   <script src="SpeakHello.js"></script>
   <script src="SpeakGoodBye.js"></script>
   <script src="script.js"></script>
 </head>
 <body>
-  <h1>Module 4 Solution</h1>
+  <div class="container">
+    <span class="badge">Coursera Fullstack Course 4</span>
+    <h1>Module 4 Solution</h1>
+    <p class="subtitle">Check the developer console (Press <strong>F12</strong> or <strong>Ctrl+Shift+I</strong> &rarr; <em>Console</em>) or see the real-time output mirrored below.</p>
+    
+    <div class="notice">
+      Open Chrome/Browser DevTools Console to confirm the outputs required by the automated grader and peer reviewers.
+    </div>
+
+    <div class="console-box">
+      <div class="console-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="console-title">Browser Console Preview</span>
+      </div>
+      <div class="console-body" id="consoleOutput"></div>
+    </div>
+  </div>
+
+  <script>
+    // Render captured console logs onto the UI
+    var outputElem = document.getElementById("consoleOutput");
+    if (window.capturedLogs && window.capturedLogs.length > 0) {
+      window.capturedLogs.forEach(function(item) {
+        var div = document.createElement("div");
+        div.className = "log-entry " + (item.startsWith("Hello") ? "hello" : "bye");
+        div.innerHTML = '<span class="prefix">&gt;</span> ' + item;
+        outputElem.appendChild(div);
+      });
+    }
+  </script>
 </body>
 </html>
